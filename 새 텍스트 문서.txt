@@ -1,0 +1,60 @@
+import math
+
+def mean(num_list):
+    return int(sum(num_list)/len(num_list))
+
+def mean_2(num_list):
+    sum_value=0
+    for i in num_list:
+        sum_value += i
+    return sum_value/len(num_list)
+
+def median(num_list):
+    num_list.sort()
+    #length = len(num_list)
+    #if length % 2 == 0:
+    #    return sum(num_list[length//2-1:length//2+1])/2.0
+    #else:
+    #    return num_list[length//2] 
+    if len(num_list) % 2 == 1:
+        i = len(num_list)//2
+        return num_list[i]
+    else:
+        i= len(num_list)//2
+        return (num_list[i] + num_list[i-1])/2
+#편차
+def dev(num_list):
+    m = mean_2(num_list)
+    return [x-m for x in num_list]
+
+#분산
+def var(num_list):
+    n = len(num_list)
+    d = dev(num_list)
+    return sum([x*x for x in d])/(n-1)
+
+#표준편자
+def stdev(num_list):
+    return math.sqrt(var(num_list))
+
+
+
+game1  = csv_data[0]
+print(game1)
+print(mean(game1))
+print(mean_2(game1))
+print(game1.sort())
+print(game1)
+print(game1[1:])
+print(median([1, 5, 17, 26, 27, 35, 38]))
+print(median([5, 17, 26, 27, 35, 38]))
+
+#[5, 17, 26, 27, 35, 38, 1]
+assert median([5, 17, 26, 27, 35, 38, 1]) ==26
+assert median([5, 17, 26, 27, 35, 38]) ==26.5
+
+print(dev([1, 5, 17, 26, 27, 35, 38]))
+print(var([1, 5, 17, 26, 27, 35, 38]))
+print(stdev([1, 5, 17, 26, 27, 35, 38]))
+print(arithmetic_mean([1, 5, 17, 26, 27, 35, 38]))
+assert stdev([1, 5, 17, 26, 27, 35, 38]) == 14.244464254746893
